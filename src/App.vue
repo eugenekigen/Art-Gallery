@@ -1,88 +1,59 @@
-<script>
-import { RouterLink, RouterView } from 'vue-router';
-import header from '@/components/Header.vue';
-export default{
-  components:{
-    header,
-  },
-}
-</script>
-
 <template>
-  <header>
-    
-  </header>
+  <v-app>
+    <!-- Conditionally render the app bar based on the current route -->
+    <v-app-bar v-if="showAppBar" app color="grey" dark>
+      <v-spacer></v-spacer>
+      <!-- Logo Section -->
+      <v-img
+        src="/path/to/your/logo.png"  
+        alt="Art Gallery Logo"
+        max-height="50"
+        class="mr-4"
+      ></v-img>
+      <v-toolbar-title class="text-wrap">Art Gallery</v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
 
-  <main>
-    <RouterView />
+    <v-main>
+      <router-view />
+    </v-main>
 
-
-  </main>
-
+    <v-bottom-navigation app color="darkblue" dark v-if="showbottom">
+      <v-btn to="/welcomepage" icon>
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+      <v-btn to="/gallery" icon>
+        <v-icon>mdi-palette</v-icon>
+      </v-btn>
+      <v-btn to="/exhibitions" icon>
+        <v-icon>mdi-calendar</v-icon>
+      </v-btn>
+      <v-btn to="/contact" icon>
+        <v-icon>mdi-account-box</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
+  </v-app>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  computed: {
+    showAppBar() {
+      // List of routes where the app bar should not appear
+      const hideRoutes = ['/', '/login', '/register', '/contact'];
+      return !hideRoutes.includes(this.$route.path);
+    },
 
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+     showbottom() {
+      // List of routes where the app bar should not appear
+      const hideRoutes = ['/', '/login', '/register', ];
+      return !hideRoutes.includes(this.$route.path);
+    }
   }
+};
+</script>
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+<style>
+/* Add any global styles here */
 </style>

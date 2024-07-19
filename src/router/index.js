@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import LoginView from '@/views/LoginView.vue'
+import WelcomePage from '@/views/WelcomePage.vue'
+import Contact from '@/views/Contact.vue'
+import Gallery from '@/views/Gallery.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +15,25 @@ const router = createRouter({
       name:'register',
       component:RegisterView
     },
+
+    {
+      path:'/welcomepage',
+      name:'welcomepage',
+      component:WelcomePage
+    },
+
+    {
+      path:'/contact',
+      name:'contact',
+      component:Contact
+    },
+
+    {
+      path:'/Gallery',
+      name:'Gallery',
+      component:Gallery
+    },
+
     {
       path:'/login',
       name:'login',

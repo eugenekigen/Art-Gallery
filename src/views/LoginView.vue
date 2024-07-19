@@ -11,7 +11,7 @@
       <v-text-field label="Password" variant="outlined" prepend-inner-icon="mdi-lock" style="color:white"></v-text-field>
       
      
-      <v-btn type="submit" width="100%" color="white" style="text-transform: capitalize;" to="/register" rounded elevation="10"><v-icon>mdi-login</v-icon>Login</v-btn>
+      <v-btn type="submit" width="100%" color="white" style="text-transform: capitalize;" to="/welcomepage" rounded elevation="10"><v-icon>mdi-login</v-icon>Login</v-btn>
 
      </v-form>
 
